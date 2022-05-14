@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:file="http://www.mulesoft.org/schema/mule/file"
+	xmlns:sftp="http://www.mulesoft.org/schema/mule/sftp"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/sftp http://www.mulesoft.org/schema/mule/sftp/current/mule-sftp.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<file:config name="File_Config" doc:name="File Config" doc:id="0768a663-03e1-4888-afa9-391659938fc1" />
+	<file:config name="File_Config1" doc:name="File Config" doc:id="7f731a62-3e3b-4245-b0c9-0584f4c6f95c" />
+	<file:config name="File_Config2" doc:name="File Config" doc:id="1c5eddd5-6b0e-4f99-9e99-3b84468735ab" />
+	<file:config name="File_Config3" doc:name="File Config" doc:id="384fb789-fb58-42b0-85d6-99c6ffddb297" />
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="e094e031-485a-4929-91c0-f604b1f0545d" >
+		<http:listener-connection host="localhost" port="8081" />
+	</http:listener-config>
+	<http:listener-config name="HTTP_Listener_config1" doc:name="HTTP Listener config" doc:id="cd7d512a-1cd7-4d50-9486-db9961eecf32" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="fileconnectorsFlow" doc:id="4ba99688-517c-4341-a162-98be3418647b" >
+		<http:listener doc:name="Listener" doc:id="27aead13-06c8-4112-9c9d-c5c7cebddc5d" config-ref="HTTP_Listener_config" path="/fileconnectors"/>
+		<file:move doc:name="Move" doc:id="11fb2fa5-1011-43e5-88f5-b79d49073937" config-ref="File_Config" sourcePath="D:\MULE\my notes" targetPath="D:\MULE\new" overwrite="true"/>
+		<logger level="INFO" doc:name="Logger" doc:id="5ea8b3c8-e694-4ccd-b5ef-f1134ba2cef8" message="hi file is moved"/>
+	</flow>
+</mule>
