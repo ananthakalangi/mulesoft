@@ -1,0 +1,35 @@
+#%RAML 1.0
+title: MyCal
+version: v2
+protocols: [HTTP,HTTPS]
+traits:
+  que: !include traits/trait.raml
+mediaType: application/json
+
+/addition:
+  get:
+    is: [que]
+    responses:
+      200:
+        body:
+              example: !include examples/response/addition-response.json
+     
+/subtraction:
+  get:
+    is: [que]
+    responses:
+            200:
+               body:
+                   example: !include examples/response/subtraction-response.json
+/mulitification:
+  get:
+    is: [que]
+    responses:
+            200:
+               body:
+                   example: !include examples/response/mulitification-response.json
+                                                      
+                
+                                                                                                                                                                                        
+
+ 
